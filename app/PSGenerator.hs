@@ -9,7 +9,7 @@
 import           Servant.Subscriber.Request
 import           Servant.Subscriber.Response
 import           Servant.Subscriber.Types
-
+import           Control.Lens
 import           Control.Applicative
 import           Data.Monoid
 import           Data.Proxy
