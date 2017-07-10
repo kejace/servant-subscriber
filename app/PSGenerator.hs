@@ -15,8 +15,6 @@ import           Data.Monoid
 import           Data.Proxy
 import           Language.PureScript.Bridge
 import           Language.PureScript.Bridge.PSTypes
-import           Servant.API
-import           Servant.PureScript
 import           Servant.Subscriber.Subscribable
 
 myTypes = [
