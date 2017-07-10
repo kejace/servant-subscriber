@@ -20,17 +20,17 @@ myTypes = [
 bridgeResponseBody :: BridgePart
 bridgeResponseBody = do
   typeName ^== "ResponseBody"
-  typeModule ^== "Servant.Subscriber.Response"
-  return psString -- For now
+  t <- view haskType
+  TypeInfo (_typePackage t) "Servant.Subscriber.Response" (_typeName t) <$> psTypeParameters
 
 bridgeRequestBody :: BridgePart
 bridgeRequestBody = do
   typeName ^== "RequestBody"
-  typeModule ^== "Servant.Subscriber.Request"
-  return psString
+  t <- view haskType
+  TypeInfo (_typePackage t) "Servant.Subscriber.Request" (_typeName t) <$> psTypeParameters
 
 myBridge :: BridgePart
 myBridge = bridgeResponseBody <|> bridgeRequestBody <|> defaultBridge
 
 main :: IO ()
-main = writePSTypes "../purescript-subscriber/src" (buildBridge myBridge) myTypes
+main = writePSTypes "../purescript-subscriber/src" (buildBridge myBridge PSv011) myTypes
